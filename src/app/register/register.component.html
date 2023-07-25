@@ -1,0 +1,80 @@
+<section class="registerpage">
+  <div class="form-box-register">
+    <div class="form-value">
+      <form (submit)="postData()">
+        <h2 class="textr">Register</h2>
+
+        <div class="inputbox">
+          <label for="name">
+            <span class="material-symbols-outlined">person</span>
+          </label>
+          <input
+            type="text"
+            name="name"
+            required
+            [(ngModel)]="user.name"
+            placeholder="Name"
+          />
+        </div>
+
+        <div class="inputbox">
+          <label for="userid">
+            <span class="material-symbols-outlined">face</span>
+          </label>
+          <input
+            type="text"
+            name="userid"
+            required
+            [(ngModel)]="user.userid"
+            placeholder="UserID"
+          />
+        </div>
+
+        <div class="inputbox">
+          <label for="email">
+            <span class="material-symbols-outlined">mail</span>
+          </label>
+          <input
+            type="email"
+            name="email"
+            required
+            [(ngModel)]="user.email"
+            placeholder="Email"
+          />
+        </div>
+
+        <div class="inputbox">
+          <label for="password">
+            <span class="material-symbols-outlined">password</span>
+          </label>
+          <input
+            type="password"
+            name="password"
+            required
+            [(ngModel)]="user.password"
+            placeholder="Password"
+          />
+        </div>
+
+        <div class="inputbox">
+          <label for="cpassword">
+            <span class="material-symbols-outlined">check</span>
+          </label>
+          <input
+            type="password"
+            name="cpassword"
+            required
+            [(ngModel)]="user.cpassword"
+            placeholder="Confirm Password"
+          />
+        </div>
+
+        <div class="click">
+          <input type="submit" value="Register" />
+        </div>
+      </form>
+
+      <a class="already" routerLink="/login"> I am already registered! </a>
+    </div>
+  </div>
+</section>

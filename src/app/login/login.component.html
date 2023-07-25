@@ -1,0 +1,40 @@
+<section class="loginpage">
+  <div class="form-box-login">
+    <div class="form-value">
+      <form (submit)="postData()">
+      <h2 class="textl">Login</h2>
+
+      <div class="inputbox">
+        <label for="email">
+          <span class="material-symbols-outlined">mail</span>
+        </label>
+        <input
+          type="email"
+          name="email"
+          required
+          [(ngModel)]="email"
+          placeholder="Email"
+        />
+      </div>
+
+      <div class="inputbox">
+        <label for="password">
+          <span class="material-symbols-outlined">password</span>
+        </label>
+        <input
+          type="password"
+          name="password"
+          required
+          [(ngModel)]="password"
+          placeholder="Password"
+        />
+      </div>
+
+      <div class="click">
+        <input type="submit" value="Login" />
+      </div>
+    </form>
+      <a class="already" routerLink="/register"> Not Registered yet! </a>
+    </div>
+  </div>
+</section>

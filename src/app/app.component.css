@@ -1,0 +1,15 @@
+:host {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.app-navbar {
+  margin: 0;
+  padding: 0;
+}
+
+.router-outlet {
+  margin: 0;
+  padding: 0;
+}
