@@ -35,14 +35,14 @@ nav {
 }
 
 #navbar li a:hover {
-  color: #17cf97;
+  color: #f26c22;
 }
 
 #navbar li a:hover::after {
   content: "";
   width: 30%;
   height: 2px;
-  background-color: #17cf97;
+  background-color: #f26c22;
   position: absolute;
   bottom: -4px;
   left: 20px;

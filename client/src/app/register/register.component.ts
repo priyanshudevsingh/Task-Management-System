@@ -11,7 +11,6 @@ import { backendUrl } from '../backendUrl';
 export class RegisterComponent {
   user = {
     name: '',
-    userid: '',
     email: '',
     password: '',
     cpassword: '',
@@ -19,23 +18,15 @@ export class RegisterComponent {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  handleInputs(event: Event): void {
-    const target = event.target as HTMLInputElement;
-    const name = target.name;
-    const value = target.value;
-    this.user = { ...this.user, [name]: value };
-  }
-
   async postData(): Promise<void> {
     try {
-      const { name, userid, email, password, cpassword } = this.user;
+      const { name, email, password, cpassword } = this.user;
 
       const res = await this.http
         .post<any>(
           `${backendUrl}/register`,
           {
             name,
-            userid,
             email,
             password,
             cpassword,

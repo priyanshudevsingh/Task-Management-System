@@ -6,7 +6,7 @@
 }
 
 .linkedinlink {
-  color: #a3fbee;
+  color: #f19a6b;
   text-decoration: underline;
 }
 
@@ -24,21 +24,6 @@
   font-weight: bold;
 }
 
-.text2 {
-  color: #c5c5c5;
-  text-align: center;
-  margin: 0;
-  padding: 20px 10px 0 10px;
-  font-weight: bold;
-}
-
-.text3 {
-  color: #c5c5c5;
-  text-align: center;
-  margin: 0;
-  padding: 10px 10px 20px 10px;
-}
-
 .text4 {
   color: #c5c5c5;
   text-align: center;
@@ -51,7 +36,7 @@
     color: #04ff0d;
   }
   25% {
-    color: #00eeff;
+    color: #f26c22;
   }
   50% {
     color: #ffc965;
@@ -72,7 +57,8 @@
 .catmeme {
   display: block;
   margin: 0 auto;
-  box-shadow: 0 5px 200px rgba(5, 255, 197, 0.555);
+  padding: 0 0 10px 0;
+  box-shadow: 0 5px 200px rgba(242, 108, 34, 1);
   border-radius: 20px 20px 20px 20px;
 }
 
@@ -83,6 +69,5 @@
   font-weight: 1000;
   border-radius: 20px 20px 20px 20px;
   cursor: pointer;
-  background-color: #17cf97;
-  box-shadow: 0 5px 200px rgba(5, 255, 197, 0.555);
+  background-color: #f26c22;
 }

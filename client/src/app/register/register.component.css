@@ -17,14 +17,14 @@
 .form-box-register {
   position: relative;
   width: 450px;
-  height: 550px;
+  height: 480px;
   background: transparent;
   border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 5px 200px rgba(5, 255, 197, 0.555);
+  box-shadow: 0 5px 200px rgba(242, 108, 34, 1);
 }
 
 .textr {
@@ -70,7 +70,7 @@ input:valid ~ label {
   width: 100%;
   height: 40px;
   border-radius: 40px;
-  background: #17cf97;
+  background: #f26c22;
   border: none;
   outline: none;
   cursor: pointer;
@@ -79,17 +79,10 @@ input:valid ~ label {
   color: #f5f2f2;
 }
 
-.material-symbols-outlined {
-  position: absolute;
-  right: 8px;
-  color: #17cf97;
-  font-size: 1.7em;
-}
-
 .already {
   margin: 5px;
   display: flex;
   justify-content: right;
-  color: #a3fbee;
+  color: #f19a6b;
   text-decoration: underline;
 }
