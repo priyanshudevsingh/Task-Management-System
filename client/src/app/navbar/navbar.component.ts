@@ -15,6 +15,7 @@ export class NavBarComponent implements OnInit {
     this.fetchAuthStatus();
   }
 
+  // determines that user is logged in or not with valid jwt
   fetchAuthStatus(): void {
     try {
       const jwtToken = localStorage.getItem('jwtToken');
@@ -24,6 +25,7 @@ export class NavBarComponent implements OnInit {
     }
   }
 
+  // for loggout which clears jwt present in local storage
   handleLogout(): void {
     localStorage.removeItem('jwtToken');
     this.router.navigate(['/login']);

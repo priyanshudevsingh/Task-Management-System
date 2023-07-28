@@ -1,0 +1,119 @@
+<section class="everything">
+  <!-- html for displaying task details -->
+  <div class="task-details">
+    <div
+      class="task-box"
+      *ngIf="task"
+      [ngStyle]="{ width: taskBoxWidth, height: taskBoxHeight }"
+    >
+      <p class="mega-content">{{ task.title }}</p>
+
+      <p class="des">Description</p>
+      <p class="des-content">{{ task.description }}</p>
+
+      <p class="pri">
+        Priority:
+        <span [ngClass]="getPriorityClass(task.priority)">{{
+          task.priority
+        }}</span>
+      </p>
+
+      <p class="sta">
+        Status: <span class="sta-content">{{ task.status }}</span>
+      </p>
+
+      <p class="sta">
+        Due Date: <span class="sta-content">{{ task.duedate }}</span>
+      </p>
+
+      <p class="dd">
+        Created At:
+        <span class="dd-content"
+          >{{ calDateTime(task.createdAt) }} |
+          {{ calAgoTime(task.createdAt) }}</span
+        >
+      </p>
+
+      <button class="edit-task" (click)="editTask()">Edit Task</button>
+      <button class="delete-task" (click)="deleteTask()">Delete Task</button>
+    </div>
+    <p class="text1" *ngIf="!task">Loading...</p>
+  </div>
+
+  <!-- html for displaying history table -->
+  <div class="hist-details" *ngIf="hist">
+    <div>
+      <table class="content-table">
+        <thead>
+          <tr *ngIf="hist.length">
+            <th>Edits History</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let i of hist.slice().reverse()">
+            <td>
+              <p class="mainh">
+                Updated At:
+                <span class="udttime"
+                  >{{ calDateTime(i.updatedAt) }} |
+                  {{ calAgoTime(i.updatedAt) }}</span
+                >
+              </p>
+
+              <ng-container *ngIf="i.title_prev !== i.title_now">
+                <p class="mainh">Title</p>
+                <p class="before">
+                  Before: <span class="histcont">{{ i.title_prev }}</span>
+                </p>
+                <p class="after">
+                  After: <span class="histcont">{{ i.title_now }}</span>
+                </p>
+              </ng-container>
+
+              <ng-container *ngIf="i.description_prev !== i.description_now">
+                <p class="mainh">Description</p>
+                <p class="before">
+                  Before: <span class="histcont">{{ i.description_prev }}</span>
+                </p>
+                <p class="after">
+                  After: <span class="histcont">{{ i.description_now }}</span>
+                </p>
+              </ng-container>
+
+              <ng-container *ngIf="i.priority_prev !== i.priority_now">
+                <p class="mainh">Priority</p>
+                <p class="before">
+                  Before: <span class="histcont">{{ i.priority_prev }}</span>
+                </p>
+                <p class="after">
+                  After: <span class="histcont">{{ i.priority_now }}</span>
+                </p>
+              </ng-container>
+
+              <ng-container *ngIf="i.status_prev !== i.status_now">
+                <p class="mainh">Status</p>
+                <p class="before">
+                  Before: <span class="histcont">{{ i.status_prev }}</span>
+                </p>
+                <p class="after">
+                  After: <span class="histcont">{{ i.status_now }}</span>
+                </p>
+              </ng-container>
+
+              <ng-container *ngIf="i.duedate_prev !== i.duedate_now">
+                <p class="mainh">Due Date</p>
+                <p class="before">
+                  Before: <span class="histcont">{{ i.duedate_prev }}</span>
+                </p>
+                <p class="after">
+                  After: <span class="histcont">{{ i.duedate_now }}</span>
+                </p>
+              </ng-container>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="text1" *ngIf="!hist.length">No Edits Found</p>
+    </div>
+  </div>
+</section>

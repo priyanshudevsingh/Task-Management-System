@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "poppins", sans-serif;
+}
+
+.tasktable {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 89.5vh;
+  width: 100%;
+  background-color: #1b2430;
+}
+
+.content-table {
+  border-collapse: collapse;
+  margin: 10px auto;
+  font-size: 0.9em;
+  min-width: 1000px;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+  box-shadow: 0 5px 200px rgba(242, 108, 34, 1);
+  justify-content: center;
+  align-items: center;
+}
+
+.content-table thead tr {
+  background-color: #f26c22;
+  color: #1b2430;
+  text-align: left;
+}
+
+.content-table th,
+.content-table td {
+  padding: 10px 15px;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #e3e1e1;
+}
+
+.content-table tbody tr:nth-of-type(odd) {
+  background-color: #ffffff;
+}
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 3.5px solid #f26c22;
+}
+
+.content-table a {
+  text-decoration: none;
+  color: #3481e7;
+  font-weight: bold;
+}
+
+.content-table a:hover {
+  color: #f26c22;
+}
+
+.Low {
+  color: #3bc240;
+  font-weight: bold;
+}
+
+.Medium {
+  color: #f1a824;
+  font-weight: bold;
+}
+
+.High {
+  color: #d23636;
+  font-weight: bold;
+}
+
+.text1 {
+  text-align: center;
+  color: #bababa;
+  margin: 0;
+  font-weight: bold;
+}
+

@@ -11,8 +11,9 @@
       <li><a routerLink="home">Home</a></li>
       <li><a routerLink="addtask">Add Task</a></li>
       <li><a routerLink="mytasks">My Tasks</a></li>
-      <li><a routerLink="register">Register</a></li>
-      <li><a routerLink="login">Login</a></li>
+      <li *ngIf="!auth"><a routerLink="register">Register</a></li>
+      <li *ngIf="!auth"><a routerLink="login">Login</a></li>
+      <li *ngIf="auth"><a class="logout" (click)="handleLogout()">Logout</a></li>
     </ul>
   </div>
 </nav>

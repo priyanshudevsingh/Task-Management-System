@@ -26,10 +26,12 @@
   align-items: center;
   box-shadow: 0 5px 200px rgba(242, 108, 34, 1);
 }
+
 .textl {
   text-align: center;
   color: #bababa;
   margin: 0;
+  font-weight: bold;
 }
 
 .inputbox {

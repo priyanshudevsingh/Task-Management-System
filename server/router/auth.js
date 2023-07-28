@@ -16,24 +16,30 @@ router.get("/", (req, res) => {
 
 // register route
 router.post("/register", async (req, res) => {
-  const { name, email, password, cpassword } = req.body;
-
-  if (!name || !email || !password || !cpassword) {
-    return res.status(422).json({ error: "You're missing some fields" });
-  }
-
   try {
+    const { name, email, password, cpassword } = req.body;
+
+    if (!name || !email || !password || !cpassword) {
+      return res.status(422).json({ error: "You're missing some fields" });
+    }
+
     const userEmailExist = await User.findOne({ email: email });
 
     if (userEmailExist) {
-      return res.status(409).json({ error: "Email already Exists" });
+      res.status(409).json({ error: "Email already Exists" });
     } else if (password != cpassword) {
-      return res.status(400).json({ error: "Passwords are not matching" });
+      res.status(400).json({ error: "Passwords are not matching" });
     } else {
       const user = new User({ name, email, password });
-
       await user.save();
       res.status(200).json({ message: "User Registered Successfully" });
+
+      const newTask = new Task({
+        email,
+        tasks: [],
+      });
+      await newTask.save();
+      console.log("yayyy");
     }
   } catch (err) {
     console.log(err);
@@ -82,9 +88,10 @@ router.get("/userdata", authenticate, async (req, res) => {
 });
 
 // task adder route
-router.post("/addtask", async (req, res) => {
+router.post("/addtask", authenticate, async (req, res) => {
   try {
-    const { email, title, description, duedate, priority, status } = req.body;
+    const { email } = req.query;
+    const { title, description, duedate, priority, status } = req.body;
     if (!email || !title || !description || !duedate || !priority || !status) {
       return res.status(422).json({ error: "You're missing some fields" });
     }
@@ -120,7 +127,8 @@ router.post("/addtask", async (req, res) => {
 // edit task route
 router.patch("/edit/:taskId", async (req, res) => {
   try {
-    const { email, title, description, duedate, priority, status } = req.body;
+    const { email } = req.query;
+    const { title, description, duedate, priority, status } = req.body;
 
     const tid = req.params.taskId;
     const existingEmail = await Task.findOne({ email });
@@ -162,26 +170,17 @@ router.patch("/edit/:taskId", async (req, res) => {
 });
 
 // delete task route
-router.delete("/delete/:taskId", async (req, res) => {
+router.delete("/delete/:taskId", authenticate, async (req, res) => {
   try {
-    const { email } = req.body;
+    const { email } = req.query;
 
     const tid = req.params.taskId;
     const existingEmail = await Task.findOne({ email });
-
-    if (!existingEmail) {
-      return res.status(404).json({ error: "User not found" });
-    }
-
     const taskToDel = existingEmail.tasks.find(
       (i) => i.taskid.toString() === tid
     );
 
-    if (!taskToDel) {
-      return res.status(404).json({ error: "Task not found" });
-    }
-
-    existingEmail.tasks.splice(taskToDel, 1);
+    existingEmail.tasks.pull(taskToDel._id);
     await existingEmail.save();
 
     res.status(200).json({ message: "Task deleted successfully" });
@@ -191,10 +190,10 @@ router.delete("/delete/:taskId", async (req, res) => {
   }
 });
 
-// view task route
-router.get("/viewtasks", async (req, res) => {
+// view task list route
+router.get("/mytasks", authenticate, async (req, res) => {
   try {
-    const { email } = req.body;
+    const { email } = req.query;
     const existingEmail = await Task.findOne({ email });
     res.send(existingEmail.tasks);
   } catch (err) {
@@ -202,10 +201,28 @@ router.get("/viewtasks", async (req, res) => {
   }
 });
 
-// view history route
-router.get("/viewhistory/:taskId", async (req, res) => {
+// view task details route
+router.get("/viewtask/:taskId", authenticate, async (req, res) => {
   try {
-    const { email } = req.body;
+    const { email } = req.query;
+
+    const tid = req.params.taskId;
+    const existingEmail = await Task.findOne({ email });
+
+    const taskToView = existingEmail.tasks.find(
+      (i) => i.taskid.toString() === tid
+    );
+
+    res.send(taskToView);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// view history route
+router.get("/viewhistory/:taskId", authenticate, async (req, res) => {
+  try {
+    const { email } = req.query;
 
     const tid = req.params.taskId;
     const existingEmail = await Task.findOne({ email });
@@ -213,6 +230,7 @@ router.get("/viewhistory/:taskId", async (req, res) => {
     const locatingTask = existingEmail.tasks.find(
       (i) => i.taskid.toString() === tid
     );
+
     res.send(locatingTask.history);
   } catch (err) {
     console.log(err);
