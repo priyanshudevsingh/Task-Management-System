@@ -81,3 +81,35 @@
   font-weight: bold;
 }
 
+.sort {
+  color: #f26c22;
+  display: flex;
+  align-items: center;
+  margin: 0 0 5px 0;
+}
+
+.label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.select {
+  border-radius: 10px;
+  border: 2px solid #9d9b9b;
+  background-color: #1b2430;
+  color: #fff;
+}
+
+.download-link {
+  display: inline-block;
+  padding: 10px;
+  background-color: #f26c22;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 15px;
+  margin-top: 16px;
+}
+
+.download-link:hover {
+  background-color: #0056b3;
+}

@@ -1,5 +1,30 @@
 <section class="tasktable">
   <div *ngIf="task">
+    <!-- for sorting -->
+    <div *ngIf="task.length" class="sort">
+      <label for="sortOption" class="label">Sort By:</label>
+      <select
+        id="sortOption"
+        class="select"
+        [(ngModel)]="selectedSortOption"
+        (change)="onSortBy($event)"
+      >
+        <option *ngFor="let option of sortOptions" [value]="option.value">
+          {{ option.label }}
+        </option>
+      </select>
+    </div>
+
+    <!-- For downloading .csv file -->
+    <a
+      *ngIf="task.length"
+      class="download-link"
+      [href]="generateDownloadLink()"
+      download="task_list.csv"
+      >Download CSV</a
+    >
+
+    <!-- task list display -->
     <table class="content-table">
       <thead *ngIf="task.length">
         <tr>
