@@ -72,7 +72,7 @@ select {
 }
 
 input[type="submit"] {
-  width: 20%;
+  width: 30%;
   height: 40px;
   border-radius: 40px;
   background: #f26c22;

@@ -48,6 +48,37 @@ nav {
   left: 20px;
 }
 
-.logout{
+.logout {
   cursor: pointer;
+}
+
+/* Responsive Styles for Mobile */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  #navbar {
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  #navbar li {
+    padding: 10px 0;
+  }
+
+  #navbar li a {
+    font-size: 1rem;
+  }
+
+  #navbar li a:hover::after {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #f26c22;
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+  }
 }

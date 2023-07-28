@@ -134,6 +134,13 @@ button.delete-task {
   align-items: center;
 }
 
+/* Media query for smaller screens */
+@media (max-width: 1050px) {
+  .content-table {
+    min-width: 100%;
+  }
+}
+
 .content-table thead tr {
   background-color: #f26c22;
   color: #1b2430;
