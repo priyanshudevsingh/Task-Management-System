@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { backendUrl } from '../backendUrl';
+import { backendUrl } from '../burl';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 

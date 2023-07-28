@@ -14,7 +14,10 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: ["http://localhost:4200"],
+    origin: [
+      "http://localhost:4200",
+      "https://task-management-system-client-red.vercel.app",
+    ],
     methods: ["GET", "POST", "DELETE", "PATCH"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
