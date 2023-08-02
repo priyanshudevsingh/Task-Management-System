@@ -17,6 +17,7 @@ app.use(
     origin: [
       "http://localhost:4200",
       "https://task-management-system-client-red.vercel.app",
+      "http://ec2-3-110-212-51.ap-south-1.compute.amazonaws.com:4200",
     ],
     methods: ["GET", "POST", "DELETE", "PATCH"],
     allowedHeaders: ["Content-Type", "Authorization"],
