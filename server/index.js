@@ -1,6 +1,5 @@
 const dotenv = require("dotenv");
 const express = require("express");
-const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
 const app = express();
@@ -10,22 +9,20 @@ dotenv.config({ path: "./config.env" });
 require("./db/connect");
 
 app.use(express.json());
-app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
     origin: [
-      "http://localhost:4200",
-      "https://task-management-system-client-red.vercel.app",
-      "http://ec2-3-110-212-51.ap-south-1.compute.amazonaws.com:4200",
+      "http://localhost:3000",
+      "https://task-management-system-client-red.vercel.app"
     ],
     methods: ["GET", "POST", "DELETE", "PATCH"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    allowedHeaders: ["Content-Type", "Authorization", "Accept"],
     credentials: true,
   })
 );
 
-app.use(require("./router/auth"));
+app.use(require("./routes"));
 
 const PORT = process.env.PORT || 5000;
 
