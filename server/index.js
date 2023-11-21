@@ -15,7 +15,7 @@ app.use(
     origin: [
       "http://localhost:3000",
       "https://task-management-system-client-red.vercel.app",
-      "https://www.cleverescrow.com"
+      "https://www.tms.cleverescrow.com"
     ],
     methods: ["GET", "POST", "DELETE", "PATCH"],
     allowedHeaders: ["Content-Type", "Authorization", "Accept"],
